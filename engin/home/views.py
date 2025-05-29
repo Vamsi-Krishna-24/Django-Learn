@@ -8,7 +8,7 @@ def home(request):
     return render(request, 'home/home.html')
 
 #Login view
-def login(request):
+def login_view(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
