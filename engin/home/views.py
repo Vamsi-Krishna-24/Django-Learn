@@ -20,6 +20,9 @@ def login_view(request):
             return render(request,'home/login.html',{'error': 'Invalid username or password'})
     return render(request, 'home/login.html')
 
+def get_started(request):
+    return render(request, 'home/get_started.html')
+
 def tailwind(request):
     return render(request, 'home/tailwind.html')
 
