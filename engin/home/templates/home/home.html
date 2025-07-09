@@ -1,15 +1,45 @@
-<!-- home/templates/home/home.html -->
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
-    <h1>Welcome to Engin.E</h1>
-    <p>This is the homepage.</p>
-</body>
-<a href="{% url 'login' %}"><button>Login</button></a>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Engin.E</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gradient-to-br from-blue-200  to-purple-400 min-h-screen text-white font-sans">
 
-<a href="{% url 'tailwind' %}"><button>Plans</button></a>
+    <!-- 🧭 Navbar -->
+    <nav class="flex justify-between items-center px-10 py-6">
+      <h1 class="text-2xl font-bold tracking-wide">Engin.E</h1>
+      <div class="space-x-4">
+        <a href="{% url 'tailwind' %}"><button class="bg-white text-blue-600 font-semibold px-4 py-2 rounded-lg hover:bg-blue-100 transition duration-300">
+          Plans
+        </button></a>
+<!--Dynamic setting-->
+        {% if user.is_authenticated %}
+        <span class="text-sm text-gray-700">Welcome, {{ user.username }}</span>
+        <a href="{% url 'logout' %}">
+            <button class="bg-red-500 text-white font-semibold px-4 py-2 rounded-lg hover:bg-red-600 transition duration-300">
+            Logout
+            </button>
+        </a>
+        {% else %}
+        <a href="{% url 'login' %}">
+            <button class="bg-white text-purple-600 font-semibold px-4 py-2 rounded-lg hover:bg-purple-100 transition duration-300">
+            Login
+            </button>
+        </a>
+        {% endif %}
 
+      </div>
+    </nav>
+
+    <!-- 🚀 Hero Section -->
+    <section class="flex flex-col items-center justify-center text-center mt-40 px-6">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Engin.E</h2>
+      <p class="text-lg text-blue-100 max-w-xl">
+        This is the homepage.
+      </p>
+    </section>
+
+  </body>
 </html>
